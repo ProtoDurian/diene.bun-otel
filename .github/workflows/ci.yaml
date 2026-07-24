@@ -1,0 +1,63 @@
+# ### workspace-ci
+# #### source: workspace
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  precommit:
+    name: Pre-Commit
+    permissions:
+      contents: read
+    uses: ./.github/workflows/⚡reusable-precommit.yaml
+    secrets: inherit
+
+  # ### bun-base-ci
+  # #### source: bun-base
+  unit:
+    name: Unit Tests
+    permissions:
+      contents: read
+    uses: ./.github/workflows/⚡reusable-test.yaml
+    secrets: inherit
+    with:
+      mode: unit
+
+  int:
+    name: Integration Tests
+    permissions:
+      contents: read
+    uses: ./.github/workflows/⚡reusable-test.yaml
+    secrets: inherit
+    with:
+      mode: int
+
+  # ### bun-lib-meta-ci
+  # #### source: bun-lib
+  meta:
+    name: Meta Tests
+    permissions:
+      contents: read
+    uses: ./.github/workflows/⚡reusable-test.yaml
+    secrets: inherit
+    with:
+      mode: meta
+
+  build:
+    name: Build Validation
+    permissions:
+      contents: read
+    uses: ./.github/workflows/⚡reusable-build.yaml
+    secrets: inherit
+
+  # ### bun-lib-ci
+  # #### source: bun-lib
+  package-validate:
+    name: Package Validation
+    permissions:
+      contents: read
+    uses: ./.github/workflows/⚡reusable-package-validate.yaml
+    secrets: inherit

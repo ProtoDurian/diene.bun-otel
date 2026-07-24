@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "Preserve",
+    "moduleDetection": "force",
+    "allowJs": true,
+
+    "moduleResolution": "bundler",
+    "paths": {
+      "@atomicloud/diene.otel": ["./src/index.ts"],
+      "@atomicloud/diene.otel/test-helper": ["./src/test-helper/index.ts"]
+    },
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "types": ["bun"]
+  },
+  "include": ["src", "tests"]
+}
